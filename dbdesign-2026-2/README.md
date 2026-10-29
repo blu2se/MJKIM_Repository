@@ -8,6 +8,7 @@
 | 파일 | 내용 | 판 |
 |---|---|---|
 | [`sql/00_conn_check.sql`](sql/00_conn_check.sql) | 실습 환경 점검 — 내 PC의 MySQL에 연결되었는지 확인 (처음 한 번, 새 PC에서 한 번) | v2 · 2026-10-27 |
+| [`sql/01_basics.sql`](sql/01_basics.sql) | MySQL 기초 따라 하기 — 테이블 · 속성 · 기본키 · 외래키 · 복합키 · CHECK · ALTER TABLE · 키 목록 조회 (선택, MySQL이 낯설 때) | v1 · 2026-10-29 |
 | [`sql/wk08_composite_key_normalization.sql`](sql/wk08_composite_key_normalization.sql) | 8주차 — 복합키·외래키가 막는 것, 이행 종속과 갱신 이상 | v2 · 2026-10-27 |
 | [`sql/wk09_datatype_key.sql`](sql/wk09_datatype_key.sql) | 9주차 — 데이터 타입을 잘못 고르면 생기는 일, 연결 엔터티 CREATE TABLE | v2 · 2026-10-27 |
 
