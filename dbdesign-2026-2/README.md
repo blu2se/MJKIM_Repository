@@ -12,6 +12,7 @@
 | [`sql/wk08_composite_key_normalization.sql`](sql/wk08_composite_key_normalization.sql) | 8주차 — 복합키·외래키가 막는 것, 이행 종속과 갱신 이상 | v2 · 2026-10-27 |
 | [`sql/wk09_datatype_key.sql`](sql/wk09_datatype_key.sql) | 9주차 — 데이터 타입을 잘못 고르면 생기는 일, 연결 엔터티 CREATE TABLE | v2 · 2026-10-27 |
 | [`sql/10주차_wk10_constraint_create_table.sql`](sql/10%EC%A3%BC%EC%B0%A8_wk10_constraint_create_table.sql) | **10주차** — 제약조건(NOT NULL · UNIQUE · CHECK · FK)과 FK 동작 옵션(RESTRICT · CASCADE · SET NULL), CREATE TABLE. 기대 오류 1048 · 1062 · 3819 · 1452 · 1451 · 1830 | v1 · 2026-11-02 |
+| [`sql/11주차_wk11_insert.sql`](sql/11%EC%A3%BC%EC%B0%A8_wk11_insert.sql) | **11주차** — 테이블 2개(부서 1 : N 사원) 만들고 데이터 넣기: CREATE TABLE · INSERT 순서(부모 → 자식). 기대 오류 1452 · 1062. 우리 조 '한 줄기' 테이블 2개와 같은 모양 | v1 · 2026-11-10 |
 
 ## 쓰는 방법 (4단계, 매주 같다)
 
@@ -25,7 +26,7 @@
 ## 모든 주차 스크립트의 공통 규칙
 
 - **⓪ 연결 확인** — 첫 블록. Workbench를 다시 열면 ⓪만 다시 실행하고 하던 블록부터 이어 한다.
-- **① 주차별 연습 DB** — `wk8_check`, `wk9_check`, `wk10_check` … 주차마다 따로라서 같은 탭에서 이어 해도 서로 건드리지 않는다. 막히면 ①부터 다시 하면 처음 상태가 된다.
+- **① 주차별 연습 DB** — `wk8_check`, `wk9_check`, `wk10_check`, `wk11_check` … 주차마다 따로라서 같은 탭에서 이어 해도 서로 건드리지 않는다. 막히면 ①부터 다시 하면 처음 상태가 된다.
 - **블록 첫 줄 USE** — ①을 건너뛰면 다른 주차 DB에 몰래 만들어지는 대신 Error 1049로 바로 알려 준다.
 - **(다시 시작점)** — 이 표시가 있는 블록은 몇 번이고 그 블록부터 다시 할 수 있다.
 - **확인 오류는 블록당 하나** — 일부러 내는 오류는 블록 마지막 줄에 있다. 오류가 나면 Workbench가 멈추는 것이 정상이다.
