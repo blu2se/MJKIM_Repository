@@ -12,7 +12,7 @@
 | [`sql/wk08_composite_key_normalization.sql`](sql/wk08_composite_key_normalization.sql) | 8주차 — 복합키·외래키가 막는 것, 이행 종속과 갱신 이상 | v2 · 2026-10-27 |
 | [`sql/wk09_datatype_key.sql`](sql/wk09_datatype_key.sql) | 9주차 — 데이터 타입을 잘못 고르면 생기는 일, 연결 엔터티 CREATE TABLE | v2 · 2026-10-27 |
 | [`sql/10주차_wk10_constraint_create_table.sql`](sql/10%EC%A3%BC%EC%B0%A8_wk10_constraint_create_table.sql) | **10주차** — 제약조건(NOT NULL · UNIQUE · CHECK · FK)과 FK 동작 옵션(RESTRICT · CASCADE · SET NULL), CREATE TABLE. 기대 오류 1048 · 1062 · 3819 · 1452 · 1451 · 1830 | v1 · 2026-11-02 |
-| [`sql/11주차_wk11_insert.sql`](sql/11%EC%A3%BC%EC%B0%A8_wk11_insert.sql) | **11주차** — 테이블 2개(부서 1 : N 사원) 만들고 데이터 넣기: CREATE TABLE · INSERT 순서(부모 → 자식). 기대 오류 1452 · 1062. 우리 조 '한 줄기' 테이블 2개와 같은 모양 | v1 · 2026-11-10 |
+| [`sql/11주차_wk11_insert.sql`](sql/11%EC%A3%BC%EC%B0%A8_wk11_insert.sql) | **11주차** — 테이블 2개(부서 1 : N 사원) 만들고 데이터 넣기: CREATE TABLE · INSERT 순서(부모 → 자식). 기대 오류 1452 · 1062. 우리 조 '요구사항 1건 구현' 테이블 2개와 같은 모양 | v1 · 2026-11-10 |
 
 ## 쓰는 방법 (4단계, 매주 같다)
 
