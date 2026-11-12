@@ -3,7 +3,7 @@
 -- =====================================================================
 -- 오늘 할 일은 3단계다. 이 파일은 1단계만 한다.
 --   1단계 (전원)   이 파일의 ⓪ → ⑥ 블록을 순서대로 하나씩 실행한다. 연습 DB wk11_check에서 한다.
---   2단계 (파트장) 실습가이드 '우리 조 틀'로 우리 파트 테이블 2개를 만든다. 우리 조 DB(team1_db ~ team7_db)에서 한다.
+--   2단계 (파트장) 실습가이드 '우리 조 틀'로 우리 파트 테이블 2개를 만든다. 우리 조 DB(메인시스템 영문 약어 + _DB, PM이 확정)에서 한다.
 --   3단계 (전원)   조 페이지 '🧪 MySQL 실습 기록'의 내 '11주차' 행을 채운다. 캡처 2장을 붙인다.
 --
 -- 실행하는 법
@@ -128,8 +128,8 @@ ORDER BY d.department_id;
 -- ---------------------------------------------------------------------
 -- 2단계 · 우리 파트 테이블 2개 (파트장) — 이 연습 DB가 아니라 우리 조 DB에 만든다
 --   실습가이드의 '우리 조 틀'을 새 Query 탭에 복사해 쓴다. 뼈대는 아래와 같다.
---   CREATE DATABASE IF NOT EXISTS team1_db DEFAULT CHARACTER SET utf8mb4;   -- 조 번호만 바꾼다 (team1_db ~ team7_db)
---   USE team1_db;
+--   CREATE DATABASE IF NOT EXISTS KM_TOS_DB DEFAULT CHARACTER SET utf8mb4;  -- 우리 조 DB 이름으로 바꾼다 (메인시스템 영문 약어 + _DB, PM이 확정)
+--   USE KM_TOS_DB;
 --   DROP TABLE IF EXISTS 자식테이블, 부모테이블;                              -- 지우기는 자식 → 부모
 --   CREATE TABLE 부모테이블 ( … PRIMARY KEY (…) );                          -- 만들기는 부모 → 자식
 --   CREATE TABLE 자식테이블 ( … CONSTRAINT fk_자식_부모 FOREIGN KEY (…) REFERENCES 부모테이블 (…) );
