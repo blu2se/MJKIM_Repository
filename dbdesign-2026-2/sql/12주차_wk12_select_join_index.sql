@@ -1,5 +1,5 @@
 -- =====================================================================
--- 데이터베이스 설계 · 12주차(11.19 목) · 찾아보는 SQL과 인덱스 1개 — 연습 스크립트 (v2)
+-- 데이터베이스 설계 · 12주차(11.19 목) · 찾아보는 SQL과 인덱스 1개 — 연습 스크립트 (v3)
 -- =====================================================================
 -- 오늘 할 일은 3단계다. 이 파일은 1단계만 한다.
 --   1단계 (전원)   이 파일의 ⓪ → ⑧ 블록을 순서대로 하나씩 실행한다. 연습 DB wk12_check에서 한다.
@@ -39,8 +39,8 @@ CREATE DATABASE wk12_check DEFAULT CHARACTER SET utf8mb4;
 USE wk12_check;
 
 -- ② 부서 · 사원 테이블과 데이터 (처음부터 다시 하는 곳)
---    11주차와 같은 테이블 · 같은 데이터다. 이 블록을 다시 실행하면 처음 상태로 돌아간다.
---    부서 4개 중 개발팀(40)에는 사원이 없다. ⑤ · ⑥에서 이 차이를 본다.
+--    11주차와 같은 모양의 테이블이다. 이 블록을 다시 실행하면 처음 상태로 돌아간다.
+--    부서 4개 중 기획팀(40)에는 사원이 없다. ⑤ · ⑥에서 이 차이를 본다.
 --    나와야 하는 결과: department_rows = 4 · employee_rows = 8
 --    처음 실행하면 노란 경고 '1051 Unknown table'이 뜬다. 정상이다.
 USE wk12_check;
@@ -65,20 +65,20 @@ CREATE TABLE employee (
     ON DELETE RESTRICT ON UPDATE RESTRICT
 );
 INSERT INTO department (department_id, department_name) VALUES
-  (10, '인사팀'), (20, '영업팀'), (30, '물류팀'), (40, '개발팀');
+  (10, '인사팀'), (20, '영업팀'), (30, '재무팀'), (40, '기획팀');
 INSERT INTO employee (employee_id, employee_name, employee_email, employee_phone, hire_date, department_id) VALUES
-  (1001, '김하늘', 'sky.kim@kmtech.kr',     '010-1234-5678', '2024-03-02', 10),
-  (1002, '이바다', 'sea.lee@kmtech.kr',     NULL,            '2025-01-06', 20),
-  (1003, '박구름', 'cloud.park@kmtech.kr',  NULL,            '2026-02-16', 10),
-  (1004, '최노을', 'sunset.choi@kmtech.kr', '010-2222-3333', '2023-07-01', 20),
-  (1005, '정새벽', 'dawn.jung@kmtech.kr',   NULL,            '2022-04-11', 30),
-  (1006, '한여름', 'summer.han@kmtech.kr',  NULL,            '2026-09-01', 30),
-  (1007, '오가을', 'autumn.oh@kmtech.kr',   '010-4444-5555', '2021-11-15', 20),
-  (1008, '유겨울', 'winter.yu@kmtech.kr',   NULL,            '2025-05-20', 10);
+  (1001, '김시습', 'sisup.kim@kmtech.kr',     '010-1234-5678', '2024-03-02', 10),
+  (1002, '이무송', 'musong.lee@kmtech.kr',     NULL,            '2025-01-06', 20),
+  (1003, '박미래', 'mirae.park@kmtech.kr',  NULL,            '2026-02-16', 10),
+  (1004, '최다솜', 'dasom.choi@kmtech.kr', '010-2222-3333', '2023-07-01', 20),
+  (1005, '정강한', 'kanghan.jung@kmtech.kr',   NULL,            '2022-04-11', 30),
+  (1006, '서하늘', 'haneul.seo@kmtech.kr',  NULL,            '2026-09-01', 30),
+  (1007, '한우리', 'uri.han@kmtech.kr',   '010-4444-5555', '2021-11-15', 20),
+  (1008, '윤나래', 'narae.yoon@kmtech.kr',   NULL,            '2025-05-20', 10);
 SELECT (SELECT COUNT(*) FROM department) AS department_rows, (SELECT COUNT(*) FROM employee) AS employee_rows;
 
 -- ③ 표 전체 보기 — 찾기 전에 먼저 무엇이 들어 있는지 본다
---    나와야 하는 결과: 8행 — 1001 김하늘 … 1008 유겨울
+--    나와야 하는 결과: 8행 — 1001 김시습 … 1008 윤나래
 USE wk12_check;
 SELECT employee_id, employee_name, hire_date, department_id
 FROM employee
@@ -87,7 +87,7 @@ ORDER BY employee_id;
 -- ④ SQL ① 조건으로 찾기 (WHERE) — 2026년에 입사한 사원
 --    WHERE는 '어떤 행만 보여 줄지'를 정한다. ③의 8행 중 조건에 맞는 행만 남는다.
 --    ORDER BY는 '어떤 순서로 보여 줄지'를 정한다.
---    나와야 하는 결과: 2행 — 1003 박구름 2026-02-16 · 1006 한여름 2026-09-01
+--    나와야 하는 결과: 2행 — 1003 박미래 2026-02-16 · 1006 서하늘 2026-09-01
 USE wk12_check;
 SELECT employee_id, employee_name, hire_date
 FROM employee
@@ -101,8 +101,8 @@ ORDER BY hire_date;
 --      INNER JOIN department d          ← 2. 붙일 표 (d는 부서 표의 짧은 이름)
 --      ON d.department_id = e.department_id   ← 3. 맞춰 볼 칸 (부모 PK = 자식 FK)
 --      SELECT e.employee_name, d.department_name   ← 4. 보여 줄 칸
---    INNER JOIN은 짝이 있는 행만 보여 준다. 사원이 없는 개발팀은 나오지 않는다.
---    나와야 하는 결과: 8행 — 1001 김하늘 인사팀 · 1002 이바다 영업팀 … 1008 유겨울 인사팀
+--    INNER JOIN은 짝이 있는 행만 보여 준다. 사원이 없는 기획팀은 나오지 않는다.
+--    나와야 하는 결과: 8행 — 1001 김시습 인사팀 · 1002 이무송 영업팀 … 1008 윤나래 인사팀
 USE wk12_check;
 SELECT e.employee_id, e.employee_name, d.department_name
 FROM employee e
@@ -112,9 +112,9 @@ ORDER BY e.employee_id;
 -- ⑥ 두 표 이어 보기 (LEFT JOIN) — 모든 부서와 그 부서의 사원
 --    LEFT JOIN은 기준 표(FROM 뒤, 여기서는 부서)의 행을 하나도 빼지 않는다.
 --    짝이 없으면 붙일 표의 칸이 NULL로 남는다.
---    ⑤와 비교한다. ⑤에는 개발팀이 없고, 여기에는 개발팀이 NULL과 함께 나온다.
+--    ⑤와 비교한다. ⑤에는 기획팀이 없고, 여기에는 기획팀이 NULL과 함께 나온다.
 --    언제 쓰나: '사원이 0명인 부서도 보여야 한다'처럼 빠지는 행이 없어야 할 때.
---    나와야 하는 결과: 9행 — 인사팀 3줄 · 영업팀 3줄 · 물류팀 2줄 · 개발팀 1줄(employee_name = NULL)
+--    나와야 하는 결과: 9행 — 인사팀 3줄 · 영업팀 3줄 · 재무팀 2줄 · 기획팀 1줄(employee_name = NULL)
 USE wk12_check;
 SELECT d.department_id, d.department_name, e.employee_name
 FROM department d
@@ -144,7 +144,7 @@ ORDER BY hire_date;
 --    기준 표: 사원 · 붙일 표: 상담 · 맞춰 볼 칸: 사원번호
 --    COUNT(c.consultation_id)는 사원마다 이어진 상담 행의 수다. GROUP BY는 '사원마다 한 줄로'다.
 --    LEFT JOIN이라서 상담이 없는 사원도 0건으로 나온다.
---    나와야 하는 결과: 결과 탭 2개 — consultation_rows = 6 · 8행(이바다 3 · 최노을 2 · 오가을 1 · 나머지 5명 0)
+--    나와야 하는 결과: 결과 탭 2개 — consultation_rows = 6 · 8행(이무송 3 · 최다솜 2 · 한우리 1 · 나머지 5명 0)
 --    처음 실행하면 노란 경고 '1051 Unknown table'이 뜬다. 정상이다.
 USE wk12_check;
 DROP TABLE IF EXISTS consultation;
