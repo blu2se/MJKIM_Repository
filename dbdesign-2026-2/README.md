@@ -13,7 +13,7 @@
 | [`sql/wk09_datatype_key.sql`](sql/wk09_datatype_key.sql) | 9주차 — 데이터 타입을 잘못 고르면 생기는 일, 연결 엔터티 CREATE TABLE | v2 · 2026-10-27 |
 | [`sql/10주차_wk10_constraint_create_table.sql`](sql/10%EC%A3%BC%EC%B0%A8_wk10_constraint_create_table.sql) | **10주차** — 제약조건(NOT NULL · UNIQUE · CHECK · FK)과 FK 동작 옵션(RESTRICT · CASCADE · SET NULL), CREATE TABLE. 기대 오류 1048 · 1062 · 3819 · 1452 · 1451 · 1830 | v1 · 2026-11-02 |
 | [`sql/11주차_wk11_insert.sql`](sql/11%EC%A3%BC%EC%B0%A8_wk11_insert.sql) | **11주차** — 테이블 2개(부서 1 : N 사원) 만들고 데이터 넣기: CREATE TABLE · INSERT 순서(부모 → 자식). 기대 오류 1452 · 1062. 우리 조 '요구사항 1건 구현' 테이블 2개와 같은 모양 | v1 · 2026-11-10 |
-| [`sql/12주차_wk12_select_join_index.sql`](sql/12%EC%A3%BC%EC%B0%A8_wk12_select_join_index.sql) | **12주차** — 찾아보는 SQL과 인덱스 1개: WHERE(조건으로 찾기) · INNER JOIN · LEFT JOIN(짝이 없는 부서는 NULL) · 인덱스 만들기와 확인(SHOW INDEX · EXPLAIN) · ERP 표와 CRM 표 이어 보기(사원별 상담 건수). 우리 조 '요구사항 1건 구현 ②'와 같은 모양 | v3 · 2026-11-17 (예제 이름 변경) |
+| [`sql/12주차_wk12_select_join_index.sql`](sql/12%EC%A3%BC%EC%B0%A8_wk12_select_join_index.sql) | **12주차** — 조건 조회(WHERE). 실습 범위는 ⓪ → ④(전체 조회 · 조건 조회). ⑤ → ⑧ INNER JOIN · LEFT JOIN · 인덱스(SHOW INDEX · EXPLAIN) · ERP · CRM 테이블 조인은 선택(강의자료로 학습) | v4 · 2026-11-17 (실습 범위 조정 · 용어 정비) |
 
 ## 쓰는 방법 (4단계, 매주 같다)
 
